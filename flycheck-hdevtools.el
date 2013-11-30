@@ -25,7 +25,11 @@
 
 ;;; Commentary:
 
-;; Provides the haskell-hdevtools checker which was removed from flycheck.
+;; Adds a Flycheck syntax checker for Haskell based on hdevtools.
+
+;;;; Setup
+
+;; (eval-after-load 'flycheck '(require 'flycheck-hdevtools))
 
 ;;; Code:
 
