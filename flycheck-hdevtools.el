@@ -1,4 +1,4 @@
-;;; flycheck-hdevtools.el --- A flycheck checker for Haskell using hdevtools
+;;; flycheck-hdevtools.el --- Flycheck: hdevtools syntax checker -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013  Steve Purcell
 
