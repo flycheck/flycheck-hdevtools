@@ -27,7 +27,6 @@
 ;;; Code:
 
 (require 'flycheck)
-(require 'rx)
 
 (flycheck-define-checker haskell-hdevtools
   "A Haskell syntax and type checker using hdevtools.
