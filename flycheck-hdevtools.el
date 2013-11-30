@@ -1,11 +1,14 @@
-;;; flycheck-hdevtools.el --- A flycheck checker for Haskell using hdevtools
+;;; flycheck-hdevtools.el --- Flycheck: hdevtools syntax checker -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013  Steve Purcell
 
 ;; Author: Steve Purcell <steve@sanityinc.com>
+;; URL: https://github.com/flycheck/flycheck-hdevtools
 ;; Keywords: convenience languages tools
 ;; Package-Requires: ((flycheck "0.15"))
-;; Version: DEV
+;; Version: 0.2-cvs
+
+;; This file is not part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,12 +25,15 @@
 
 ;;; Commentary:
 
-;; Provides the haskell-hdevtools checker which was removed from flycheck.
+;; Add an Flycheck syntax checker based on hdevtools for Haskell.
+
+;;;; Setup
+
+;; (eval-after-load 'flycheck '(require 'flycheck-hdevtools))
 
 ;;; Code:
 
 (require 'flycheck)
-(require 'rx)
 
 (flycheck-define-checker haskell-hdevtools
   "A Haskell syntax and type checker using hdevtools.
