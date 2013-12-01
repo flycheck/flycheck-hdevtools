@@ -12,14 +12,15 @@ background daemons, and thus checks faster than plain GHC.
 Installation
 ------------
 
-If you're an Emacs 24 user or you have a recent version of
-`package.el` you can install this package from the [MELPA][melpa]
+You'll need Emacs 24 for `flycheck`, so the recommended way to get
+`flycheck-hdevtools` is as a package from the [MELPA][melpa]
 repository. The version of `haskell-hdevtools` there will always be
 up-to-date. There are also packages in [Marmalade][marmalade], which
 track the [latest numbered tag][tags].
 
-Otherwise, first ensure `flycheck` is installed, then download this
-code and add the directory to your Emacs `load-path`.
+If you insist on doing things the hard way, first ensure `flycheck` is
+installed, then download this code and add the directory to your Emacs
+`load-path`.
 
 Then, in your `init.el`:
 
