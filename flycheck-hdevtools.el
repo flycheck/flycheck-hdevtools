@@ -1,6 +1,6 @@
 ;;; flycheck-hdevtools.el --- A flycheck checker for Haskell using hdevtools
 
-;; Copyright (C) 2013  Steve Purcell
+;; Copyright (C) 2013-2014  Steve Purcell
 
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; URL: https://github.com/flycheck/flycheck-hdevtools
