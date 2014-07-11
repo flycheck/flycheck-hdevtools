@@ -39,24 +39,42 @@
   "A Haskell syntax and type checker using hdevtools.
 
 See URL `https://github.com/bitc/hdevtools'."
-  :command ("hdevtools" "check" "-g" "-Wall" source-inplace)
+  :command
+  ("hdevtools" "check" "-g" "-Wall"
+   (eval (when flycheck-ghc-no-user-package-database
+           (list "-g" "-no-user-package-db")))
+   (eval (apply #'append (mapcar (lambda (db) (list "-g" "-package-db" "-g" db))
+                                 flycheck-ghc-package-databases)))
+   (eval (list
+          "-g" "-i" "-g"
+          (flycheck-module-root-directory
+           (flycheck-find-in-buffer flycheck-haskell-module-re))))
+   (eval (apply #'append (mapcar (lambda (db) (list "-g" "-i" "-g" db))
+                                 flycheck-ghc-search-path)))
+   source)
   :error-patterns
   ((warning line-start (file-name) ":" line ":" column ":"
-            (or " " "\n    ") "Warning:" (optional "\n")
-            (one-or-more " ")
-            (message (one-or-more not-newline)
-                     (zero-or-more "\n"
-                                   (one-or-more " ")
-                                   (one-or-more not-newline)))
+            (or " " "\n ") "Warning:" (optional "\n")
+            (message
+             (one-or-more " ") (one-or-more not-newline)
+             (zero-or-more "\n"
+                           (one-or-more " ")
+                           (one-or-more not-newline)))
             line-end)
    (error line-start (file-name) ":" line ":" column ":"
           (or (message (one-or-more not-newline))
-              (and "\n" (one-or-more " ")
-                   (message (one-or-more not-newline)
-                            (zero-or-more "\n"
-                                          (one-or-more " ")
-                                          (one-or-more not-newline)))))
+              (and "\n"
+                   (message
+                    (one-or-more " ") (one-or-more not-newline)
+                    (zero-or-more "\n"
+                                  (one-or-more " ")
+                                  (one-or-more not-newline)))))
           line-end))
+  :error-filter
+  (lambda (errors)
+    (-> errors
+      flycheck-dedent-error-messages
+      flycheck-sanitize-errors))
   :modes haskell-mode
   :next-checkers ((warnings-only . haskell-hlint)))
 
