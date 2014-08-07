@@ -5,7 +5,7 @@
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; URL: https://github.com/flycheck/flycheck-hdevtools
 ;; Keywords: convenience languages tools
-;; Package-Requires: ((flycheck "0.15") (dash "2.0"))
+;; Package-Requires: ((flycheck "0.19") (dash "2.0"))
 ;; Version: DEV
 
 ;; This file is not part of GNU Emacs.
@@ -36,6 +36,10 @@
 (require 'dash)
 (require 'flycheck)
 
+(defun flycheck-hdevtools-prepend-and-escape (option value)
+  "Prepend OPTION to VALUE and escape them."
+  (list "-g" option "-g" value))
+
 (flycheck-define-checker haskell-hdevtools
   "A Haskell syntax and type checker using hdevtools.
 
@@ -44,14 +48,14 @@ See URL `https://github.com/bitc/hdevtools'."
   ("hdevtools" "check" "-g" "-Wall"
    (eval (when flycheck-ghc-no-user-package-database
            (list "-g" "-no-user-package-db")))
-   (eval (apply #'append (mapcar (lambda (db) (list "-g" "-package-db" "-g" db))
-                                 flycheck-ghc-package-databases)))
+   (option-list "-package-db" flycheck-ghc-package-databases
+                flycheck-hdevtools-prepend-and-escape)
    (eval (list
           "-g" "-i" "-g"
           (flycheck-module-root-directory
            (flycheck-find-in-buffer flycheck-haskell-module-re))))
-   (eval (apply #'append (mapcar (lambda (db) (list "-g" "-i" "-g" db))
-                                 flycheck-ghc-search-path)))
+   (option-list "-i" flycheck-ghc-search-path
+                flycheck-hdevtools-prepend-and-escape)
    source)
   :error-patterns
   ((warning line-start (file-name) ":" line ":" column ":"
