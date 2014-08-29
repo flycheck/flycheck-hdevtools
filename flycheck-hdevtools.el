@@ -5,7 +5,7 @@
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; URL: https://github.com/flycheck/flycheck-hdevtools
 ;; Keywords: convenience languages tools
-;; Package-Requires: ((flycheck "0.15") (dash "2.0"))
+;; Package-Requires: ((flycheck "0.21-cvs1") (dash "2.0"))
 ;; Version: DEV
 
 ;; This file is not part of GNU Emacs.
