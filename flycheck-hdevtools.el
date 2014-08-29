@@ -77,7 +77,7 @@ See URL `https://github.com/bitc/hdevtools'."
       flycheck-dedent-error-messages
       flycheck-sanitize-errors))
   :modes haskell-mode
-  :next-checkers ((warnings-only . haskell-hlint)))
+  :next-checkers ((warning . haskell-hlint)))
 
 
 (add-to-list 'flycheck-checkers 'haskell-hdevtools)
