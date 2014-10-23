@@ -78,4 +78,4 @@ Author links:
 [tags]: https://github.com/flycheck/flycheck-hdevtools/tags
 [hdevtools]: https://github.com/bitc/hdevtools
 [marmalade]: http://marmalade-repo.org
-[melpa]: http://melpa.milkbox.net
+[melpa]: http://melpa.org
