@@ -1,6 +1,8 @@
 flycheck-hdevtools
 ==================
 
+**Warning: `hdevtools` is no longer actively maintained, so this code is not actively developed.**
+
 This library provides a [flycheck][] checker for Haskell source code
 using [hdevtools][]. The checker was split out from the main
 `flycheck` codebase at the end of November 2013 due to
