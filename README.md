@@ -2,9 +2,7 @@ flycheck-hdevtools
 ==================
 
 This library provides a [flycheck][] checker for Haskell source code
-using [hdevtools][]. The checker was split out from the main
-`flycheck` codebase at the end of November 2013 due to
-[various issues](https://github.com/flycheck/flycheck/issues/275).
+using [hdevtools][].
 
 `hdevtools` is a syntax and type checker which caches information in persistent
 background daemons, and thus checks faster than plain GHC.
@@ -76,6 +74,6 @@ Author links:
 
 [flycheck]: https://github.com/flycheck/flycheck
 [tags]: https://github.com/flycheck/flycheck-hdevtools/tags
-[hdevtools]: https://github.com/bitc/hdevtools
+[hdevtools]: https://github.com/hdevtools/hdevtools
 [marmalade]: http://marmalade-repo.org
 [melpa]: http://melpa.org
